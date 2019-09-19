@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 import subprocess
-import pathlib
 import csv
 import datetime
-import sys
 import argparse
 import os
 from unidecode import unidecode
+
 
 def configure():
     parser = argparse.ArgumentParser(description='Cut up audio/video clips using timestamps from a .csv file')
@@ -17,6 +16,7 @@ def configure():
     parser.add_argument('-f', '--fuzz', metavar='\b', type=float, default=0, help='add seconds to either end of each clip')
     args = parser.parse_args()
     return(args)
+
 
 def import_data(path):
     with open(path, mode='r') as csv_file:
@@ -113,6 +113,7 @@ def ts_to_cmd(ts, filein, av):
     return(cmd_tup)
 
 # utilities used by other functions
+
 
 def output_filename(filein):
     basename, ext = os.path.splitext(filein)
