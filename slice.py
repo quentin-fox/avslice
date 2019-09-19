@@ -27,6 +27,7 @@ def import_data(path):
 
 
 def parse_data_ffmpeg(tsdata, fuzz):
+    """gets timestamps ready for use in the arguments passed to ffmpeg"""
     tsconv = [(fz(parse_secs(x), fuzz, '-'), fz(parse_secs(y), fuzz)) for x, y, z in tsdata]
     return(tsconv)
 
